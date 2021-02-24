@@ -78,9 +78,11 @@ function createButton(isSeen, loopIteration){
 }
 /**
  * For every object in moviesData array, creates li tag consisting of button, title, year, genre and summary. Li tags are connected to html class="moviesList".
+ * @param {string} outputTag HTML tag in which moviesdata will be shown
  */
-function showMovieData(){
+function showMovieData(outputTag){
     const brTag = document.createElement("br");
+    const ulTag = document.createElement("ul");
     let amount = 0;
     for(amount in moviesData){
         let newText = document.createElement("li");
@@ -99,7 +101,8 @@ function showMovieData(){
             newText.appendChild(dataInfo[iteration]);
         }
 
-       document.getElementById("moviesList").appendChild(newText);
+       ulTag.appendChild(newText);
+       outputTag.appendChild(ulTag);
     }
 }
 /**
@@ -107,7 +110,7 @@ function showMovieData(){
  */
 function onWebsiteStart(){
     refreshCounters();
-    showMovieData();
+    showMovieData("formContainer");
 }
 
 

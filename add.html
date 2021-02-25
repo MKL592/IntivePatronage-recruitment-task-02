@@ -13,6 +13,18 @@
         <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
         <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
     </div>
-    <div id="formContainer"></div>
+    <div id="formContainer">
+        <form action="" onsubmit="validateInput()">
+            <label for="title">Title: </label>
+            <input type="text" id="title"><br>
+            <label for="year">Year: </label>
+            <input type="number" id="year"><br>
+            <label for="genre">Genre: </label>
+            <input type="text" id="genre"><br>
+            <label for="summary">Summary: </label>
+            <input type="text" id="summary"><br>
+            <input type="submit" value="Submit Movie">
+        </form>
+    </div>
 </body>
 </html>

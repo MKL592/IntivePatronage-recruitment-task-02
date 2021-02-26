@@ -1,13 +1,23 @@
 import {setCounterOfTo} from './movies-counter.js';
 import MoviesStorage from './movies-storage.js';
 
-var moviesStorageInstance = new MoviesStorage();
-var moviesData = moviesStorageInstance.get();
+    var moviesStorageInstance = new MoviesStorage();
+    var moviesData = moviesStorageInstance.get();
 
-console.log(moviesData);
-//refreshCounters();
-showMovieData("moviesList");
+    //refreshCounters();
+    showMovieData("moviesList");
+    let submitButton = document.getElementById("submitForm")
+    submitButton.addEventListener("click", function(){
+        handleInput();
+    });
 
+function handleInput(){
+    if(validateInput() != false){
+        moviesStorageInstance.set(validateInput());
+    }else{
+        console.log("handleInput Error");
+    }
+}
 
 function countAllObjectItems(input){
     let amountOfObjectElements = 0;
@@ -40,14 +50,13 @@ function createButton(isSeen, loopIteration){
     (function(index){
         newButton.addEventListener("click", function(){
         if(newButton.innerHTML == "✔"){
-            console.log(index);
             newButton.innerHTML = "✖";
-            moviesData[index].seen = "F";
-            refreshCounters();
+            //moviesStorageInstance.set(index, "F");
+            //refreshCounters();
         }else if(newButton.innerHTML == "✖"){
             newButton.innerHTML = "✔";
-            moviesData[index].seen = "T";
-            refreshCounters();
+            //moviesStorageInstance.set(index, "T");
+            //refreshCounters();
         }else{
             console.log("ERROR");
         }

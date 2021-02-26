@@ -58,7 +58,7 @@ export default class MoviesStorage{
                 "seen": "F"
             }
         ]
-        if(localStorage.getItem("movies") && JSON.parse(localStorage.getItem("movies")) === Array){
+        if(localStorage.getItem("movies") || JSON.parse(localStorage.getItem("movies")) === Array){
             console.log("Array exists in local storage");
         }else{
             localStorage.setItem("movies", JSON.stringify(this.moviesData));
@@ -93,7 +93,7 @@ export default class MoviesStorage{
            }
         }else{
             retrievedObject.push(id);
-            localStorage.setItem("movies", retrievedObject);
+            localStorage.setItem("movies", JSON.stringify(retrievedObject));
         }
     }
 
@@ -103,7 +103,7 @@ export default class MoviesStorage{
         for(amount in retrievedObject){
             if(retrievedObject[amount].id == id){
                 retrievedObject.splice(amount, 1);
-                localStorage.setItem("movies", retrievedObject);
+                localStorage.setItem("movies", JSON.stringify(retrievedObject));
                 break;
             }
         }

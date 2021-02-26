@@ -15,7 +15,7 @@ function validateInput(){
     console.log(userInput.title);
     if(userInput.title != "" || userInput.year != "" || userInput.genre != ""){
         let currentYear = new Date();
-        let getLocalInfo = localStorage.getItem("movies");
+        let getLocalInfo = JSON.parse(localStorage.getItem("movies"));
         let iteration = 0;
         for(iteration in getLocalInfo){
             if(getLocalInfo[iteration].title == userInput.title){
@@ -28,6 +28,8 @@ function validateInput(){
             errorHandler("Invalid year!");
         }
         
+    }else{
+        errorHandler("Please fill the form");
     }
 }
 

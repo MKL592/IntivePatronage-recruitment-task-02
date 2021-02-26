@@ -1,53 +1,33 @@
-/**
- * @author Artur Panasiuk <artur-panasiuk592@wp.pl>
- */
+import {setCounterOfTo} from './movies-counter.js';
+import MoviesStorage from './movies-storage.js';
 
-/**
- * Takes an object/array and returns number of elements.
- * @param {object} input Object/array input.
- * @returns {number}
- */
+var moviesStorageInstance = new MoviesStorage();
+var moviesData = moviesStorageInstance.get();
+
+console.log(moviesData);
+//refreshCounters();
+showMovieData("moviesList");
+
+
 function countAllObjectItems(input){
     let amountOfObjectElements = 0;
-    for(amount in input) {
-        amountOfObjectElements++;
+    for(amountOfObjectElements in input) {
     }
     return amountOfObjectElements;
 }
-/**
- * Counts all given keys by given value and returns number.
- * @param {object} input Input Object/array.
- * @param {string} key Checks this key for specific value.
- * @param {string} value Value that you want to search.
- * @returns {number}
- */
+
 function countObjectValues(input, key, value){
     let filterObject = input.filter(ob => ob[key] === value);
     return countAllObjectItems(filterObject);
 }
-/**
- * Changes content of given HTML tag by given value.
- * @param {string} tag HTML tag.
- * @param {string} value Content that you want sTagId element to be.
- */
-function changeTextById(tag, value){
-    document.getElementById(tag).innerHTML = value;
-}
-/**
- * Refreshes all values on frontend, that have been changed by other operations.
- */
+
 function refreshCounters(){
-    changeTextById(
+    setCounterOfTo(
         "moviesCounterAll", countAllObjectItems(moviesData));
-    changeTextById(
+    setCounterOfTo(
         "moviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
 }
-/**
- * Creates buttons for showMovieData functions
- * @param {string} isSeen Passed value to check moviesData.seen
- * @param {number} loopIteration Passed iteration number from function
- * @returns {object} Returns ready to append button object
- */
+
 function createButton(isSeen, loopIteration){
     let newButton = document.createElement("button");
     if(isSeen == "T"){
@@ -76,11 +56,8 @@ function createButton(isSeen, loopIteration){
 
     return newButton;
 }
-/**
- * For every object in moviesData array, creates li tag consisting of button, title, year, genre and summary. Li tags are connected to html class="moviesList".
- * @param {string} outputTag HTML tag in which moviesdata will be shown
- */
-function showMovieData(outputTag){
+
+function showMovieData(){
     const brTag = document.createElement("br");
     const ulTag = document.createElement("ul");
     let amount = 0;
@@ -95,22 +72,12 @@ function showMovieData(outputTag){
             "currentGenre": document.createTextNode(moviesData[amount].genre),
             "currentSummary": document.createTextNode(moviesData[amount].summary)
         }
-
+        var iteration = 0;
         for(iteration in dataInfo){
             newText.appendChild(brTag.cloneNode(true));
             newText.appendChild(dataInfo[iteration]);
         }
 
-       ulTag.appendChild(newText);
-       outputTag.appendChild(ulTag);
+        document.getElementById("moviesList").appendChild(newText);
     }
 }
-/**
- * Called in HTML by body onload function. Runs only once.
- */
-function onWebsiteStart(){
-    refreshCounters();
-    showMovieData("formContainer");
-}
-
-

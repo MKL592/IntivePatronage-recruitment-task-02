@@ -10,11 +10,8 @@
     <script type="module" async src="index.js"></script>
 </head>
 <body>
-    <div id="moviesCountersContainer">
-        <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
-        <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
-    </div>
     <div id="formContainer">
+        <form id="form">
             <label for="title">Title: </label>
             <input type="text" id="title"><br>
             <label for="year">Year: </label>
@@ -23,8 +20,15 @@
             <input type="text" id="genre"><br>
             <label for="summary">Summary: </label>
             <input type="text" id="summary"><br>
-            <input type="submit" value="Submit Movie" onclick="validateInput()"><br>
+            <button onclick="validateInput()">Add New Movie</button><br>
+        </form>
     </div>
+
+    <div id="moviesCountersContainer">
+        <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
+        <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
+    </div>
+
     <div id="moviesListContainer">    
         <ul id="moviesList"></ul>
     </div>

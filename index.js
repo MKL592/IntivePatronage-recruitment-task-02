@@ -74,8 +74,8 @@ function showMovieData(){
         }
         var iteration = 0;
         for(iteration in dataInfo){
-            newText.appendChild(brTag.cloneNode(true));
             newText.appendChild(dataInfo[iteration]);
+            newText.appendChild(brTag.cloneNode(true));
         }
 
         document.getElementById("moviesList").appendChild(newText);

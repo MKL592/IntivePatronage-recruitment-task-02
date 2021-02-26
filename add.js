@@ -1,5 +1,6 @@
 function validateInput(){
     let userInput = {
+        "id": createId,
         "title": document.getElementById("title").value,
         "year": document.getElementById("year").value,
         "genre": document.getElementById("genre").value,
@@ -25,9 +26,20 @@ function validateInput(){
                 } 
             }
         }
+    }else{
+        errorHandler("Please fill form");
+        return false;
     }
 }
 
 function errorHandler(errorMessage){
     alert(errorMessage);
+}
+
+function createId(){
+    let getLocalInfo = JSON.parse(localStorage.getItem("movies"));
+    do{
+        let newId = Math.floor(Math.random() * 100);
+    }while(newId != getLocalInfo[iteration].id)
+    return newId;
 }

@@ -4,12 +4,14 @@ import MoviesStorage from './movies-storage.js';
     var moviesStorageInstance = new MoviesStorage();
     var moviesData = moviesStorageInstance.get();
 
-    //refreshCounters();
-    showMovieData("moviesList");
-    let submitButton = document.getElementById("submitForm")
-    submitButton.addEventListener("click", function(){
+    window.onload = function(){
+        refreshCounters();
+        showMovieData("moviesList");
+        let submitButton = document.getElementById("submitForm")
+        submitButton.addEventListener("click", function(){
         handleInput();
-    });
+        });
+    }
 
 function handleInput(){
     if(validateInput() != false){
@@ -33,9 +35,9 @@ function countObjectValues(input, key, value){
 
 function refreshCounters(){
     setCounterOfTo(
-        "moviesCounterAll", countAllObjectItems(moviesData));
+        "anotherMoviesCounterAll", countAllObjectItems(moviesData));
     setCounterOfTo(
-        "moviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
+        "anotherMoviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
 }
 
 function createButton(isSeen, loopIteration){

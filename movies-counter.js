@@ -1,4 +1,3 @@
-export let setCounterOfTo = (input, output) => {
-    document.getElementById(output).innerHTML = input;
+export let setCounterOfTo = (tag, value) => {
+    document.getElementById(tag).innerHTML = value;
 }
-

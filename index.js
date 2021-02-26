@@ -4,14 +4,14 @@ import MoviesStorage from './movies-storage.js';
     var moviesStorageInstance = new MoviesStorage();
     var moviesData = moviesStorageInstance.get();
 
-    window.onload = function(){
-        refreshCounters();
-        showMovieData("moviesList");
-        let submitButton = document.getElementById("submitForm")
-        submitButton.addEventListener("click", function(){
+window.onload = function(){
+    showMovieData("moviesList");
+    refreshCounters();
+    let submitButton = document.getElementById("submitForm")
+    submitButton.addEventListener("click", function(){
         handleInput();
-        });
-    }
+    });
+}
 
 function handleInput(){
     if(validateInput() != false){

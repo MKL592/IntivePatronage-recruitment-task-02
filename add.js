@@ -18,7 +18,7 @@ function validateInput(){
                 errorHandler("Title already exists!");
                 return false;
             }else{
-                if(userInput.year > currentYear.getFullYear() || userInput.year < 999){
+                if(userInput.year > currentYear.getFullYear() || userInput.year <= 999){
                     errorHandler("Invalid year!");
                     return false;
                 }else{

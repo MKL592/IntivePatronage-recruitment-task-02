@@ -24,6 +24,7 @@ function handleInput(){
 function countAllObjectItems(input){
     let amountOfObjectElements = 0;
     for(amountOfObjectElements in input) {
+        amountOfObjectElements++
     }
     return amountOfObjectElements;
 }
@@ -50,15 +51,18 @@ function createButton(isSeen, loopIteration){
         newButton.innerHTML = "{ERROR}";
     }
     (function(index){
+        console.log(index);
         newButton.addEventListener("click", function(){
         if(newButton.innerHTML == "✔"){
             newButton.innerHTML = "✖";
-            //moviesStorageInstance.set(index, "F");
-            //refreshCounters();
+            moviesData[index].seen = "F";
+            moviesStorageInstance.set(index, moviesData[index]);
+            refreshCounters();
         }else if(newButton.innerHTML == "✖"){
             newButton.innerHTML = "✔";
-            //moviesStorageInstance.set(index, "T");
-            //refreshCounters();
+            moviesData[index].seen = "T";
+            moviesStorageInstance.set(index, moviesData[index]);
+            refreshCounters();
         }else{
             console.log("ERROR");
         }

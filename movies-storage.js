@@ -82,17 +82,11 @@ export default class MoviesStorage{
 
     set(id, data){
         var retrievedObject = JSON.parse(localStorage.getItem("movies"));
-        if(data !== undefined){
-           var amount = 0;
-           for(amount in retrievedObject){
-               if(retrievedObject[amount].id == id){
-                   retrievedObject[amount] = data;
-                   localStorage.setItem("movies", retrievedObject);
-                   break;
-               }
-           }
-        }else{
+        if(data === undefined){
             retrievedObject.push(id);
+            localStorage.setItem("movies", JSON.stringify(retrievedObject));
+        }else{
+            retrievedObject.splice(id, 1, data);
             localStorage.setItem("movies", JSON.stringify(retrievedObject));
         }
     }

@@ -51,7 +51,6 @@ function createButton(isSeen, loopIteration){
         newButton.innerHTML = "{ERROR}";
     }
     (function(index){
-        console.log(index);
         newButton.addEventListener("click", function(){
         if(newButton.innerHTML == "✔"){
             newButton.innerHTML = "✖";

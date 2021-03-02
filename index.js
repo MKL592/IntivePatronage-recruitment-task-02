@@ -7,10 +7,12 @@ import MoviesStorage from './movies-storage.js';
 window.onload = function(){
     showMovieData("moviesList");
     refreshCounters();
-    let submitButton = document.getElementById("submitForm")
-    submitButton.addEventListener("click", function(){
-        handleInput();
-    });
+    if(document.getElementById("submitForm")){
+        let submitButton = document.getElementById("submitForm")
+        submitButton.addEventListener("click", function(){
+            handleInput();
+        });
+    }
 }
 
 function handleInput(){
@@ -35,10 +37,17 @@ function countObjectValues(input, key, value){
 }
 
 function refreshCounters(){
-    setCounterOfTo(
-        "anotherMoviesCounterAll", countAllObjectItems(moviesData));
-    setCounterOfTo(
-        "anotherMoviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
+    if(document.getElementById("moviesCounterAll") && document.getElementById("moviesCounterSeen")){
+        setCounterOfTo(
+            "moviesCounterAll", countAllObjectItems(moviesData));
+        setCounterOfTo(
+            "moviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
+    }else if(document.getElementById("anotherMoviesCounterAll") && document.getElementById("anotherMoviesCounterSeen")){
+        setCounterOfTo(
+            "anotherMoviesCounterAll", countAllObjectItems(moviesData));
+        setCounterOfTo(
+            "anotherMoviesCounterSeen", countObjectValues(moviesData, "seen", "T"));
+    }
 }
 
 function createButton(isSeen, loopIteration){
